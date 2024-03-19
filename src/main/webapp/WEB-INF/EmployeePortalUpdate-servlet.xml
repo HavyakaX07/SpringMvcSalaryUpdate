@@ -1,0 +1,44 @@
+<!-- This is configuration file of Dispatcher servlet make use of in order 
+	to re-direct the traffic. according to URL mapping, request will be redirected 
+	to controller. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/jdbc
+        http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan
+		base-package="com.springmvc.employeeSalaryUpdate"></context:component-scan>
+
+<!-- Configure Bean resolver -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" /> <!-- Set the prefix for view names -->
+		<property name="suffix" value=".jsp" /> <!-- Set the suffix for view names -->
+	</bean>
+
+<!-- Configure Data source that will make data base connection -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName"
+			value="org.postgresql.Driver" />
+		<property name="url"
+			value="jdbc:postgresql://localhost:5432/test" />
+		<property name="username" value="postgres" />
+		<property name="password" value="Hegde" />
+		<!-- Other properties like maxTotal, maxIdle, etc. can be configured here -->
+	</bean>
+	
+	<!-- Inject Data source to jdbc template -->
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.JdbcTemplate"
+		autowire="constructor" />
+	
+</beans>

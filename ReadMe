@@ -1,0 +1,21 @@
+This project will explore on spring mvc architecture.
+
+In order to setup the the system we need tomcat web server of compatible version.
+Download the tomcat version from official site and extract it to specific location.
+
+Go to Window -> Preference -> Server. 
+Add Server and choose the parent folder of bin folder(upto bin). and apply the setting and close.
+
+After that add the project to server so that servlet will run (.war) will deploy on the server.
+
+Add the web project to server and run the server and hit the URL http://localhost:8080/SpringMvc<project-name>.
+
+This should by default land on index.jsp page and should execute "Hello World!". So now web application is configured.
+
+How Spring MVC works.??
+
+First client will send the request -> that will be picked by web.xml and that will forward it to Dispatcher servlet (Front Controller).
+
+Front-Controller again make use of configuration file and will delegate to specific controller depending on url-pattern.
+
+

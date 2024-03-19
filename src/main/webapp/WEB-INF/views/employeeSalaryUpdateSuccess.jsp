@@ -1,0 +1,1 @@
+<h1>Successfully updated salary information in db</h1>
