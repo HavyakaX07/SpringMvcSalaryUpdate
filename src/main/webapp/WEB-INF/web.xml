@@ -24,3 +24,8 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 </web-app>
+<!-- More over we can completely avoid this web xml file
+create class that extends AbstractAnnotationDispatcherServlet (might be different cross check once).
+
+implement the methods one is 
+ -->
