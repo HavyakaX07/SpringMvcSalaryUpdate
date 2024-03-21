@@ -18,4 +18,21 @@ First client will send the request -> that will be picked by web.xml and that wi
 
 Front-Controller again make use of configuration file and will delegate to specific controller depending on url-pattern.
 
+Now we will implement the filter concept also. That will intercept the incoming traffic and will block according the filter condition defined.
+
+
+DelegatingFilterProxy is a Spring Framework class that delegates to a standard Servlet Filter bean managed by the Spring application context. It's commonly used in Spring MVC applications to delegate requests to filters defined as Spring beans, allowing for greater flexibility and control over filter configuration.
+
+Here's a deeper dive into the concept of DelegatingFilterProxy:
+
+Delegation: The primary purpose of DelegatingFilterProxy is to delegate the processing of requests to a standard Servlet Filter bean managed by the Spring application context. Instead of directly defining a filter in the web.xml deployment descriptor, you declare a DelegatingFilterProxy and specify the name of the filter bean to delegate to.
+
+Spring Bean Management: By using DelegatingFilterProxy, the filter bean is managed by the Spring application context. This means that the filter can benefit from dependency injection, lifecycle management, and other features provided by the Spring IoC container.
+
+Configuration: To configure a DelegatingFilterProxy, you typically define it in the web.xml deployment descriptor, specifying its name and target bean name. The actual filter bean is then declared in the Spring application context configuration.
+
+Flexibility: DelegatingFilterProxy provides flexibility in managing filter configuration. You can define multiple instances of DelegatingFilterProxy in web.xml, each delegating to different filter beans managed by Spring. This allows you to dynamically change filter implementations without modifying the deployment descriptor.
+
+Integration with Spring Security: DelegatingFilterProxy is commonly used in conjunction with Spring Security to delegate requests to the FilterChainProxy, which internally manages a chain of Spring Security filters. This integration allows for robust security configurations within Spring MVC applications.
+
 
